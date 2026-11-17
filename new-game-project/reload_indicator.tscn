@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://rt38uj8s3fd6"]
+
+[ext_resource type="Script" uid="uid://d0bvqpnruyh3k" path="res://reload_indicator.gd" id="1_dhbe5"]
+
+[node name="ReloadIndicator" type="Control" unique_id=2018337159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dhbe5")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1872740875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Ring" type="Control" parent="CenterContainer" unique_id=362676592]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2

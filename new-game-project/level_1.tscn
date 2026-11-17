@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b6pw17s7ak142"]
+
+[ext_resource type="PackedScene" uid="uid://cqlbbh6h6gxb6" path="res://player.tscn" id="1_3hls8"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_hbghi"]
+[ext_resource type="PackedScene" uid="uid://bdirgmx3bgfu4" path="res://pause_menu.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://ipq8a8avqfag" path="res://hotbar.tscn" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://ctr3e8sbob3nj" path="res://ak_47.tscn" id="5_rka8t"]
+
+[node name="Level 1" type="Node2D" unique_id=249506022]
+
+[node name="Background" type="Node" parent="." unique_id=2074020877]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=195256215]
+z_index = -10
+position = Vector2(475.00006, 218.00002)
+scale = Vector2(12.0078125, 7.6875)
+texture = ExtResource("1_hbghi")
+
+[node name="Player" parent="." unique_id=1921003556 instance=ExtResource("1_3hls8")]
+position = Vector2(-15, 9)
+
+[node name="PauseMenu" parent="." unique_id=1561327290 instance=ExtResource("3_hn12h")]
+
+[node name="Hotbar" parent="." unique_id=88535539 instance=ExtResource("4_ihfcg")]
+
+[node name="Ak47" parent="." unique_id=442674607 instance=ExtResource("5_rka8t")]
+position = Vector2(441, 33)

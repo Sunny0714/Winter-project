@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dwf5mjpf1hqvm"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_5mpr5"]
+[ext_resource type="Script" uid="uid://c64w832h8ebgb" path="res://bullet_mid.gd" id="1_jfayg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mpr5"]
+radius = 9.0
+height = 46.0
+
+[node name="BulletMid" type="Area2D" unique_id=1541241417]
+z_index = -2
+script = ExtResource("1_jfayg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150975527]
+shape = SubResource("CapsuleShape2D_5mpr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1063969455]
+scale = Vector2(0.125, 0.3125)
+texture = ExtResource("1_5mpr5")

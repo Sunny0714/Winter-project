@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cqlbbh6h6gxb6"]
+
+[ext_resource type="Script" uid="uid://nj4sc6to8j8f" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://w4xsyvcujvlc" path="res://damage_number.tscn" id="2_sweqy"]
+[ext_resource type="PackedScene" uid="uid://de5q5mo75agp" path="res://held_ak_47.tscn" id="3_2hs0m"]
+[ext_resource type="Script" uid="uid://cr03a4c0buxmj" path="res://health_bar.gd" id="3_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
+radius = 72.02777
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sweqy"]
+bg_color = Color(0.16078432, 0.17254902, 0.21960784, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+bg_color = Color(0.062080204, 0.6293898, 0.10901124, 1)
+border_color = Color(0.13464904, 0.1346491, 0.13464898, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
+bg_color = Color(0.53333336, 0.047058824, 0.1254902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Player" type="CharacterBody2D" unique_id=1921003556]
+script = ExtResource("1_onrkg")
+damage_numbers_scene = ExtResource("2_sweqy")
+ak47_held_scene = ExtResource("3_2hs0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192790741]
+shape = SubResource("CircleShape2D_hqtel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1423483058]
+texture = ExtResource("2_i3pqv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=830396348]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=937482519]
+zoom = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455401413]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=124149135]
+z_index = 100
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -108.0
+offset_right = 250.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.29062042, 0.8056621, 0.069572836, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_sweqy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
+show_percentage = false
+script = ExtResource("3_i3pqv")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer" unique_id=377156137]
+z_index = 99
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -108.0
+offset_right = 250.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4160229, 0.022828992, 0.016357934, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqtel")
+show_percentage = false

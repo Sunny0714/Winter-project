@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://de5q5mo75agp"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_2vva8"]
+[ext_resource type="Script" uid="uid://b5uit70wuumsh" path="res://held_ak_47.gd" id="1_taanm"]
+[ext_resource type="PackedScene" uid="uid://dwf5mjpf1hqvm" path="res://bullet_mid.tscn" id="2_llsjb"]
+[ext_resource type="PackedScene" uid="uid://rt38uj8s3fd6" path="res://reload_indicator.tscn" id="3_v83fk"]
+
+[node name="HeldAk47" type="Node2D" unique_id=542782426]
+script = ExtResource("1_taanm")
+bullet_scene = ExtResource("2_llsjb")
+reload_indicator_scene = ExtResource("3_v83fk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452672392]
+position = Vector2(0, -64)
+scale = Vector2(0.25781253, 1)
+texture = ExtResource("1_2vva8")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=360166991]
+position = Vector2(0, -129)
