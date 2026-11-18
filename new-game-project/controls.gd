@@ -21,6 +21,7 @@ var background: ColorRect
 var center: CenterContainer
 
 func _ready():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_setup_keybinds()
@@ -60,12 +61,12 @@ func _build_ui():
 	background = ColorRect.new()
 	background.color = Color(0, 0, 0, 0.7)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	background.mouse_filter = Control.MOUSE_FILTER_STOP
+	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(background)
 
 	center = CenterContainer.new()
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	center.mouse_filter = Control.MOUSE_FILTER_STOP
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(center)
 
 	main_panel = PanelContainer.new()
@@ -180,7 +181,11 @@ func _close_menu():
 	visible = false
 	waiting_action = ""
 	get_tree().paused = false
-	_set_hotbar_mouse(true)
+
+	var player = get_tree().root.find_child("Player", true, false)
+	if is_instance_valid(player) and is_instance_valid(player.held_ak):
+		player.held_ak.wait_for_mouse_release = true
+		player.held_ak.is_firing = false
 
 func _start_rebind(action: String):
 	waiting_action = action
