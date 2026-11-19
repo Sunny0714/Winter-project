@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://cqlbbh6h6gxb6"]
 
 [ext_resource type="Script" uid="uid://nj4sc6to8j8f" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dkladu8vimfwc" path="res://nade.tscn" id="2_b26j0"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://w4xsyvcujvlc" path="res://damage_number.tscn" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://de5q5mo75agp" path="res://held_ak_47.tscn" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://cr03a4c0buxmj" path="res://health_bar.gd" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://wmj71h550jbe" path="res://melee.tscn" id="4_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://n8pjkbbg137e" path="res://held_pistol.tscn" id="4_dw050"]
+[ext_resource type="PackedScene" uid="uid://1miqbn1dkktd" path="res://grenade.tscn" id="5_1jxqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 72.02777
@@ -34,9 +37,12 @@ corner_radius_bottom_left = 6
 
 [node name="Player" type="CharacterBody2D" unique_id=1921003556]
 script = ExtResource("1_onrkg")
+grenade_visual_scene = ExtResource("2_b26j0")
 damage_numbers_scene = ExtResource("2_sweqy")
 ak47_held_scene = ExtResource("3_2hs0m")
+pistol_held_scene = ExtResource("4_dw050")
 melee_scene = ExtResource("4_2hs0m")
+grenade_scene = ExtResource("5_1jxqw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192790741]
 shape = SubResource("CircleShape2D_hqtel")

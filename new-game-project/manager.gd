@@ -2,6 +2,7 @@ extends Node
 
 signal hotbar_changed
 
+var vision: = false
 var inventory: String = "none"
 var hotbar: Array[Dictionary] = [
 	{"id": "melee", "amount": 1, "max_stack": 1},
@@ -9,24 +10,48 @@ var hotbar: Array[Dictionary] = [
 	{"id": "", "amount": 0, "max_stack": 0},
 	{"id": "", "amount": 0, "max_stack": 0},
 	{"id": "", "amount": 0, "max_stack": 0},
-	{"id": "", "amount": 0, "max_stack": 0}
-]
+	{"id": "", "amount": 0, "max_stack": 0}]
+var last_pickup_frame := -1
+
+func claim_pickup_press() -> bool:
+	var current_frame = Engine.get_process_frames()
+	if last_pickup_frame == current_frame:
+		return false
+	last_pickup_frame = current_frame
+	return true
 
 func add_item(item_id: String, amount: int, max_stack: int = 99, data: Dictionary = {}):
 	if item_id == "" or amount <= 0:
 		return amount
+	if item_id == "grenade":
+		max_stack = 6
+	if item_id == "medkit":
+		max_stack = 2
+	if item_id in ["ak47", "sniper", "rpg", "shotgun", "pistol"]:
+		var default_reserve = 120
+		match item_id:
+			"ak47":
+				default_reserve = 120
+			"sniper":
+				default_reserve = 15
+			"rpg":
+				default_reserve = 3
+			"shotgun":
+				default_reserve = 12
+			"pistol":
+				default_reserve = 120
 
-	if item_id == "ak47":
 		for i in range(1, 6):
 			if hotbar[i]["id"] == "":
 				hotbar[i] = {
 					"id": item_id,
 					"amount": int(data.get("amount", amount)),
-					"reserve": int(data.get("reserve", 90)),
+					"reserve": int(data.get("reserve", default_reserve)),
 					"max_stack": 1
 				}
 				hotbar_changed.emit()
 				return 0
+
 		return amount
 
 	var original_amount = amount
@@ -52,7 +77,6 @@ func add_item(item_id: String, amount: int, max_stack: int = 99, data: Dictionar
 				amount -= added
 				if amount <= 0:
 					break
-
 	if amount != original_amount:
 		hotbar_changed.emit()
 
@@ -61,7 +85,6 @@ func add_item(item_id: String, amount: int, max_stack: int = 99, data: Dictionar
 func remove_item(slot_index: int):
 	if slot_index < 1 or slot_index > 5:
 		return {}
-
 	var item = hotbar[slot_index].duplicate(true)
 	hotbar[slot_index] = {"id": "", "amount": 0, "max_stack": 0}
 	hotbar_changed.emit()

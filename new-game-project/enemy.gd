@@ -102,10 +102,8 @@ func _do_hit(body):
 func take_damage(amount: float):
 	if dead or amount <= 0:
 		return
-
 	health = clampf(health - amount, 0.0, max_health)
 	aggroed = true
-
 	show_damage_number(amount)
 	flash_red()
 

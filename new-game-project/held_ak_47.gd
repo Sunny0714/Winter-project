@@ -4,7 +4,7 @@ extends Node2D
 @export var reload_indicator_scene: PackedScene
 @export var fire_rate: float = 0.12
 @export var magazine_size: int = 30
-@export var reserve_ammo: int = 90
+@export var reserve_ammo: int = 120
 @export var reload_time: float = 1.5
 
 @onready var muzzle = $Muzzle
@@ -133,7 +133,7 @@ func save_ammo():
 
 func load_ammo(data: Dictionary):
 	ammo = int(data.get("amount", magazine_size))
-	reserve_ammo = int(data.get("reserve", 90))
+	reserve_ammo = int(data.get("reserve", 120))
 	update_ammo_label()
 
 func _exit_tree():

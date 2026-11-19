@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://weuddu6a0473"]
+
+[ext_resource type="Script" uid="uid://bbs8bbbh0vuau" path="res://pistol.gd" id="1_bttkv"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_6e3nq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
+radius = 55.145264
+
+[node name="Pistol" type="Area2D" unique_id=442674607]
+z_index = -1
+script = ExtResource("1_bttkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763099926]
+shape = SubResource("CircleShape2D_8rbij")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
+rotation = 0.66831666
+scale = Vector2(0.20742826, 0.511869)
+texture = ExtResource("2_6e3nq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
+z_index = 100
+offset_left = -76.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 63.0
+scroll_active = false

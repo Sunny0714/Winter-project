@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ctr3e8sbob3nj" path="res://ak_47.tscn" id="5_rka8t"]
 [ext_resource type="PackedScene" uid="uid://b7l35mbkbihx1" path="res://enemy.tscn" id="6_5hph3"]
 [ext_resource type="PackedScene" uid="uid://cpufdvc2y2d6s" path="res://enemy2.tscn" id="7_j7kpp"]
+[ext_resource type="PackedScene" uid="uid://dkladu8vimfwc" path="res://nade.tscn" id="8_bjebc"]
+[ext_resource type="PackedScene" uid="uid://weuddu6a0473" path="res://pistol.tscn" id="9_5rr72"]
 
 [node name="Level 1" type="Node2D" unique_id=249506022]
 
@@ -33,3 +35,7 @@ position = Vector2(1311, -53)
 
 [node name="Enemy2" parent="." unique_id=912436987 instance=ExtResource("7_j7kpp")]
 position = Vector2(876, 763)
+
+[node name="Nade" parent="." unique_id=131318077 instance=ExtResource("8_bjebc")]
+
+[node name="Pistol" parent="." unique_id=241577193 instance=ExtResource("9_5rr72")]

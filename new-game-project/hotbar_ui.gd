@@ -1,6 +1,8 @@
 extends Control
 
 @export var ak47_drop_scene: PackedScene
+@export var pistol_drop_scene: PackedScene
+@export var grenade_drop_scene: PackedScene
 
 @onready var slots = $Slots
 
@@ -54,11 +56,39 @@ func update_hotbar():
 			button.text = ""
 		elif item["id"] == "ak47":
 			var player = get_tree().root.find_child("Player", true, false)
-
 			if is_instance_valid(player) and is_instance_valid(player.held_ak):
 				button.text = "ak47\n" + str(player.held_ak.ammo) + "/" + str(player.held_ak.reserve_ammo)
 			else:
-				button.text = "ak47\n" + str(item["amount"]) + "/" + str(item.get("reserve", 90))
+				button.text = "ak47\n" + str(item["amount"]) + "/" + str(item.get("reserve", 120))
+		elif item["id"] == "pistol":
+			var player = get_tree().root.find_child("Player", true, false)
+			if is_instance_valid(player) and is_instance_valid(player.held_pistol):
+				button.text = "pistol\n" + str(player.held_pistol.ammo) + "/" + str(player.held_pistol.reserve_ammo)
+			else:
+				button.text = "pistol\n" + str(item["amount"]) + "/" + str(item.get("reserve", 120))
+		elif item["id"] == "rpg":
+			var player = get_tree().root.find_child("Player", true, false)
+			if is_instance_valid(player) and is_instance_valid(player.held_rpg):
+				button.text = "rgp\n" + str(player.held_rpg.ammo) + "/" + str(player.held_rpg.reserve_ammo)
+			else:
+				button.text = "rpg\n" + str(item["amount"]) + "/" + str(item.get("reserve", 3))
+		elif item["id"] == "sniper":
+			var player = get_tree().root.find_child("Player", true, false)
+			if is_instance_valid(player) and is_instance_valid(player.held_sniper):
+				button.text = "sniper\n" + str(player.held_sniper.ammo) + "/" + str(player.held_sniper.reserve_ammo)
+			else:
+				button.text = "sniper\n" + str(item["amount"]) + "/" + str(item.get("reserve", 15))
+		elif item["id"] == "shotgun":
+			var player = get_tree().root.find_child("Player", true, false)
+			if is_instance_valid(player) and is_instance_valid(player.held_shotgun):
+				button.text = "shotgun\n" + str(player.held_shotgun.ammo) + "/" + str(player.held_shotgun.reserve_ammo)
+			else:
+				button.text = "shotgun\n" + str(item["amount"]) + "/" + str(item.get("reserve", 12))
+		elif item["id"] == "medkit":
+			button.text = "med\n" + str(item["amount"])
+		elif item["id"] == "grenade":
+			button.text = "nade\n" + str(item["amount"])
+
 		else:
 			button.text = item["id"]
 
@@ -67,20 +97,29 @@ func update_hotbar():
 func drop_item_from_slot(slot_index: int):
 	if slot_index < 1 or slot_index > 5:
 		return
-	if Manager.hotbar[slot_index]["id"] != "ak47":
+	var item_id = Manager.hotbar[slot_index]["id"]
+	var drop_scene: PackedScene
+	if item_id == "ak47":
+		drop_scene = ak47_drop_scene
+	elif item_id == "pistol":
+		drop_scene = pistol_drop_scene
+	elif item_id == "grenade":
+		drop_scene = grenade_drop_scene
+	else:
 		return
-	if ak47_drop_scene == null:
+	if drop_scene == null:
 		return
-
 	var player = get_tree().root.find_child("Player", true, false)
 	if not is_instance_valid(player):
 		return
-
 	var item = Manager.remove_item(slot_index)
-	var drop = ak47_drop_scene.instantiate()
+	var drop = drop_scene.instantiate()
 	get_tree().current_scene.add_child(drop)
 	drop.global_position = player.global_position + Vector2(40, 0)
-	drop.set("weapon_data", item)
+	if item_id == "ak47" or item_id == "pistol":
+		drop.set("weapon_data", item)
+	elif item_id == "grenade":
+		drop.set("grenade_amount", item["amount"])
 
 func set_inventory_dragging(state: bool):
 	inventory_dragging = state

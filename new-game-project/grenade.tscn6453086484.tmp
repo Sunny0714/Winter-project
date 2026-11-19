@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://1miqbn1dkktd"]
+
+[ext_resource type="Script" uid="uid://dj3ploiu8uivg" path="res://grenade.gd" id="1_24g56"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_gju2f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gju2f"]
+radius = 22.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_24g56"]
+radius = 256.4995
+
+[node name="Grenade" type="RigidBody2D" unique_id=2015354839]
+script = ExtResource("1_24g56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=152216502]
+shape = SubResource("CapsuleShape2D_gju2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=936324606]
+scale = Vector2(0.34375, 0.4453125)
+texture = ExtResource("1_gju2f")
+
+[node name="Explosion" type="Area2D" parent="." unique_id=1425484053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" unique_id=269255432]
+shape = SubResource("CircleShape2D_24g56")
+
+[node name="Ripple" type="Line2D" parent="Explosion" unique_id=1276741592]

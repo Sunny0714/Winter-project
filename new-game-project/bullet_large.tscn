@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://smesevix2g3m"]
+
+[ext_resource type="Script" uid="uid://ci26cdhqxxy3i" path="res://bullet_large.gd" id="1_buv2v"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_6uyqa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mpr5"]
+height = 80.0
+
+[node name="BulletLarge" type="Area2D" unique_id=1541241417]
+z_index = -2
+script = ExtResource("1_buv2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150975527]
+shape = SubResource("CapsuleShape2D_5mpr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1063969455]
+scale = Vector2(0.1484375, 0.5859375)
+texture = ExtResource("2_6uyqa")

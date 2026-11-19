@@ -18,6 +18,10 @@ rotation = 0.66831666
 scale = Vector2(0.1953125, 1)
 texture = ExtResource("1_8rbij")
 
-[node name="Label" type="Label" parent="." unique_id=1393139840]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
+z_index = 100
+offset_left = -76.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 63.0
+scroll_active = false

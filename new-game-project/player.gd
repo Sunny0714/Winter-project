@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 
 @onready var sprite = $Sprite2D
@@ -5,19 +6,33 @@ extends CharacterBody2D
 @onready var damage_bar = $CanvasLayer/DamageBar
 @onready var death_menu = get_tree().current_scene.get_node_or_null("DeathMenu")
 @onready var damage_number_marker = $DamageNumber
+@onready var held_grenade = null
 
+@export var grenade_visual_scene: PackedScene
 @export var damage_numbers_scene: PackedScene
 @export var speed: float = 520
-@export var dash_speed: float = 4000.0
-@export var dash_duration: float = 0.15
+@export var dash_speed: float = 3500.0
+@export var dash_duration: float = 0.1
 @export var dash_cooldown: float = 1.5
 @export var max_health: float = 100.0
 @export var ak47_held_scene: PackedScene
+@export var pistol_held_scene: PackedScene
+@export var sniper_held_scene: PackedScene
+@export var rpg_held_scene: PackedScene
+@export var shotgun_held_scene: PackedScene
 @export var melee_scene: PackedScene
 @export var melee_cooldown: float = 0.4
+@export var grenade_scene: PackedScene
+@export var grenade_throw_cooldown: float = 0.5
 
+var grenade_mouse_was_pressed := false
+var grenade_ready := true
 var melee_ready := true
 var held_ak = null
+var held_pistol = null
+var held_rpg = null
+var held_sniper = null
+var held_shotgun = null
 var dead := false
 var is_stunned := false
 var dash_ready := true
@@ -66,6 +81,15 @@ func _process(delta):
 		return
 
 	var hotbar = get_tree().root.find_child("HotbarUI", true, false)
+	var mouse_pressed = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+
+	if mouse_pressed and not grenade_mouse_was_pressed and grenade_ready and is_instance_valid(hotbar):
+		if not hotbar.inventory_dragging and not Input.is_action_pressed("ui_cancel"):
+			var item_id = Manager.hotbar[hotbar.selected_slot]["id"]
+			if item_id == "grenade" and not get_viewport().gui_get_hovered_control():
+				throw_grenade()
+
+	grenade_mouse_was_pressed = mouse_pressed
 
 	if Input.is_action_just_pressed("melee") and melee_ready and is_instance_valid(hotbar):
 		var mouse_over_slot = false
@@ -80,7 +104,7 @@ func _process(delta):
 				melee_attack()
 
 	if Input.is_action_just_pressed("dash") and dash_ready:
-		if not is_instance_valid(held_ak) or not held_ak.is_reloading:
+		if not is_weapon_reloading():
 			dash()
 
 	if shake_strength > 0:
@@ -88,6 +112,19 @@ func _process(delta):
 		shake_strength = lerp(shake_strength, 0.0, 0.15)
 		if shake_strength < 0.1:
 			shake_strength = 0
+
+func is_weapon_reloading() -> bool:
+	if is_instance_valid(held_ak) and held_ak.is_reloading:
+		return true
+	if is_instance_valid(held_pistol) and held_pistol.is_reloading:
+		return true
+	if is_instance_valid(held_sniper) and held_sniper.is_reloading:
+		return true
+	if is_instance_valid(held_shotgun) and held_shotgun.is_reloading:
+		return true
+	if is_instance_valid(held_rpg) and held_rpg.is_reloading:
+		return true
+	return false
 
 func take_damage(amount: float):
 	if dead:
@@ -141,7 +178,7 @@ func update_damage_bar():
 	tween.tween_property(damage_bar, "value", health, 0.35)
 
 func dash():
-	if dead or is_stunned or not dash_ready:
+	if dead or is_stunned or not dash_ready or is_weapon_reloading():
 		return
 	dash_ready = false
 	is_dashing = true
@@ -183,16 +220,69 @@ func equip_hotbar_item(item_id: String):
 	if is_instance_valid(held_ak):
 		held_ak.visible = false
 		held_ak.set_process(false)
-	if item_id != "ak47":
-		speed = 520.0
-		return
-	if held_ak == null:
-		if ak47_held_scene == null:
-			return
-		held_ak = ak47_held_scene.instantiate()
-		add_child(held_ak)
-	held_ak.visible = true
-	held_ak.set_process(true)
+
+	if is_instance_valid(held_pistol):
+		held_pistol.visible = false
+		held_pistol.set_process(false)
+	
+	if is_instance_valid(held_rpg):
+		held_rpg.visible = false
+		held_rpg.set_process(false)
+	
+	if is_instance_valid(held_sniper):
+		held_sniper.visible = false
+		held_sniper.set_process(false)
+	
+	if is_instance_valid(held_shotgun):
+		held_shotgun.visible = false
+		held_shotgun.set_process(false)
+
+	speed = 520.0
+
+	if item_id == "ak47":
+		if held_ak == null:
+			if ak47_held_scene == null:
+				return
+			held_ak = ak47_held_scene.instantiate()
+			add_child(held_ak)
+		held_ak.visible = true
+		held_ak.set_process(true)
+
+	elif item_id == "pistol":
+		if held_pistol == null:
+			if pistol_held_scene == null:
+				return
+			held_pistol = pistol_held_scene.instantiate()
+			add_child(held_pistol)
+		held_pistol.visible = true
+		held_pistol.set_process(true)
+
+	elif item_id == "rpg":
+		if held_rpg == null:
+			if rpg_held_scene == null:
+				return
+			held_rpg = rpg_held_scene.instantiate()
+			add_child(held_rpg)
+		held_rpg.visible = true
+		held_rpg.set_process(true)
+
+	elif item_id == "shotgun":
+		if held_shotgun == null:
+			if shotgun_held_scene == null:
+				return
+			held_shotgun = shotgun_held_scene.instantiate()
+			add_child(held_shotgun)
+		held_shotgun.visible = true
+		held_shotgun.set_process(true)
+		
+	elif item_id == "sniper":
+		if held_sniper == null:
+			if sniper_held_scene == null:
+				return
+			held_sniper = sniper_held_scene.instantiate()
+			add_child(held_sniper)
+		held_sniper.visible = true
+		held_sniper.set_process(true)
 
 func melee_attack():
 	if melee_scene == null or not melee_ready:
@@ -205,3 +295,45 @@ func melee_attack():
 	swipe.activate()
 	await get_tree().create_timer(melee_cooldown).timeout
 	melee_ready = true
+
+func throw_grenade():
+	if grenade_scene == null or not grenade_ready:
+		return
+	var hotbar = get_tree().root.find_child("HotbarUI", true, false)
+	if not is_instance_valid(hotbar):
+		return
+	var slot = Manager.hotbar[hotbar.selected_slot]
+	if slot["id"] != "grenade" or slot["amount"] <= 0:
+		return
+	grenade_ready = false
+	var direction = (get_global_mouse_position() - global_position).normalized()
+	var grenade = grenade_scene.instantiate()
+	get_tree().current_scene.add_child(grenade)
+	grenade.global_position = global_position + direction * 60.0
+	grenade.add_collision_exception_with(self)
+	grenade.launch(direction, get_global_mouse_position())
+	slot["amount"] -= 1
+	if slot["amount"] <= 0:
+		slot["id"] = ""
+		slot["amount"] = 0
+	Manager.hotbar_changed.emit()
+	await get_tree().create_timer(grenade_throw_cooldown).timeout
+	grenade_ready = true
+
+func update_grenade_visual(item_id: String):
+	if is_instance_valid(held_grenade):
+		held_grenade.queue_free()
+		held_grenade = null
+	if item_id != "grenade" or grenade_visual_scene == null:
+		return
+	held_grenade = grenade_visual_scene.instantiate()
+	add_child(held_grenade)
+	held_grenade.position = Vector2(22, -18)
+	held_grenade.rotation_degrees = 45
+	held_grenade.visible = true
+	held_grenade.process_mode = Node.PROCESS_MODE_DISABLED
+	if held_grenade is Area2D:
+		held_grenade.monitoring = false
+		held_grenade.monitorable = false
+		held_grenade.collision_layer = 0
+		held_grenade.collision_mask = 0
