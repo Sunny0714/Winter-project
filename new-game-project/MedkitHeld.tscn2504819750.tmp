@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://baexd22q7tiv5"]
+
+[ext_resource type="Script" uid="uid://cja2pawejw4xu" path="res://medkit.gd" id="1_p1bxr"]
+[ext_resource type="PackedScene" uid="uid://rt38uj8s3fd6" path="res://reload_indicator.tscn" id="2_apiji"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="4_gago2"]
+
+[node name="Medkit" type="Node2D" unique_id=542782426]
+script = ExtResource("1_p1bxr")
+reload_indicator_scene = ExtResource("2_apiji")
+animation_speed = null
+movement_distance = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452672392]
+position = Vector2(0, -48)
+scale = Vector2(0.8203125, 0.48437497)
+texture = ExtResource("4_gago2")

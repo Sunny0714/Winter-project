@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://cpufdvc2y2d6s" path="res://enemy2.tscn" id="7_j7kpp"]
 [ext_resource type="PackedScene" uid="uid://dkladu8vimfwc" path="res://nade.tscn" id="8_bjebc"]
 [ext_resource type="PackedScene" uid="uid://weuddu6a0473" path="res://pistol.tscn" id="9_5rr72"]
+[ext_resource type="PackedScene" uid="uid://7mlwgkl4a3t5" path="res://MedkitUse.tscn" id="10_gyffv"]
+[ext_resource type="PackedScene" uid="uid://ba125t18f3k5r" path="res://shotgun.tscn" id="11_1pe0h"]
+[ext_resource type="PackedScene" uid="uid://bo7nhhnsrif43" path="res://death_menu.tscn" id="12_27bay"]
+[ext_resource type="PackedScene" uid="uid://i75n6ogtvyv0" path="res://ShieldThrown.tscn" id="13_sof0w"]
+[ext_resource type="PackedScene" uid="uid://dcriru5fpw5om" path="res://PurpleShieldDrop.tscn" id="14_ubhxj"]
+[ext_resource type="PackedScene" uid="uid://cbm57l3a3ngym" path="res://BlueShieldDrop.tscn" id="15_65or1"]
 
 [node name="Level 1" type="Node2D" unique_id=249506022]
 
@@ -27,15 +33,54 @@ position = Vector2(-15, 9)
 
 [node name="Hotbar" parent="." unique_id=88535539 instance=ExtResource("4_ihfcg")]
 
-[node name="Ak47" parent="." unique_id=442674607 instance=ExtResource("5_rka8t")]
-position = Vector2(441, 33)
+[node name="DeathMenu" parent="." unique_id=1261205827 instance=ExtResource("12_27bay")]
 
-[node name="Enemy" parent="." unique_id=1781338760 instance=ExtResource("6_5hph3")]
-position = Vector2(1311, -53)
+[node name="Enemy" type="Node" parent="." unique_id=730420368]
 
-[node name="Enemy2" parent="." unique_id=912436987 instance=ExtResource("7_j7kpp")]
+[node name="Enemy" parent="Enemy" unique_id=1781338760 instance=ExtResource("6_5hph3")]
+position = Vector2(1013, 1)
+
+[node name="Enemy7" parent="Enemy" unique_id=764611485 instance=ExtResource("6_5hph3")]
+position = Vector2(-675, -307)
+
+[node name="Enemy4" parent="Enemy" unique_id=588087810 instance=ExtResource("6_5hph3")]
+position = Vector2(606, -440)
+
+[node name="Enemy5" parent="Enemy" unique_id=1271784716 instance=ExtResource("6_5hph3")]
+position = Vector2(606, -440)
+
+[node name="Enemy2" parent="Enemy" unique_id=912436987 instance=ExtResource("7_j7kpp")]
 position = Vector2(876, 763)
 
-[node name="Nade" parent="." unique_id=131318077 instance=ExtResource("8_bjebc")]
+[node name="Enemy3" parent="Enemy" unique_id=865317404 instance=ExtResource("7_j7kpp")]
+position = Vector2(-83, 988)
 
-[node name="Pistol" parent="." unique_id=241577193 instance=ExtResource("9_5rr72")]
+[node name="Enemy6" parent="Enemy" unique_id=345844057 instance=ExtResource("7_j7kpp")]
+position = Vector2(-1003, 523)
+
+[node name="Items" type="Node" parent="." unique_id=588478955]
+
+[node name="ShieldNadeThrown" parent="Items" unique_id=917261657 instance=ExtResource("13_sof0w")]
+
+[node name="ShieldNadeThrown2" parent="Items" unique_id=1081931189 instance=ExtResource("13_sof0w")]
+
+[node name="Ak47" parent="Items" unique_id=442674607 instance=ExtResource("5_rka8t")]
+position = Vector2(10, -11)
+
+[node name="Nade" parent="Items" unique_id=131318077 instance=ExtResource("8_bjebc")]
+
+[node name="Pistol" parent="Items" unique_id=241577193 instance=ExtResource("9_5rr72")]
+
+[node name="med" parent="Items" unique_id=1860780914 instance=ExtResource("10_gyffv")]
+
+[node name="Shotgun" parent="Items" unique_id=963157796 instance=ExtResource("11_1pe0h")]
+
+[node name="PurpleShieldDrop" parent="." unique_id=1959610436 instance=ExtResource("14_ubhxj")]
+
+[node name="PurpleShieldDrop2" parent="." unique_id=1847817047 instance=ExtResource("14_ubhxj")]
+
+[node name="PurpleShieldDrop3" parent="." unique_id=1633717645 instance=ExtResource("14_ubhxj")]
+
+[node name="BlueShieldDrop" parent="." unique_id=273535820 instance=ExtResource("15_65or1")]
+
+[node name="BlueShieldDrop2" parent="." unique_id=1349557059 instance=ExtResource("15_65or1")]

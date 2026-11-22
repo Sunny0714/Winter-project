@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1miqbn1dkktd"]
 
 [ext_resource type="Script" uid="uid://dj3ploiu8uivg" path="res://grenade.gd" id="1_24g56"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_gju2f"]
+[ext_resource type="Texture2D" uid="uid://bnw3pswxivp0r" path="res://PNG/grenade-removebg-preview.png" id="2_24g56"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gju2f"]
 radius = 22.0
@@ -18,8 +18,8 @@ z_index = 100
 shape = SubResource("CapsuleShape2D_gju2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=936324606]
-scale = Vector2(0.34375, 0.4453125)
-texture = ExtResource("1_gju2f")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_24g56")
 
 [node name="Explosion" type="Area2D" parent="." unique_id=1425484053]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bqitovv5kdjkb" path="res://held_pistol.gd" id="1_j01yy"]
 [ext_resource type="PackedScene" uid="uid://bo1s8w26mlf5e" path="res://bullet_small.tscn" id="2_tvuso"]
 [ext_resource type="PackedScene" uid="uid://rt38uj8s3fd6" path="res://reload_indicator.tscn" id="3_uyl6t"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="4_pwmpi"]
+[ext_resource type="Texture2D" uid="uid://divvhtu0tqkjx" path="res://PNG/Glock-removebg-preview.png" id="4_tvuso"]
 
 [node name="HeldPistol" type="Node2D" unique_id=542782426]
 script = ExtResource("1_j01yy")
@@ -11,9 +11,9 @@ bullet_scene = ExtResource("2_tvuso")
 reload_indicator_scene = ExtResource("3_uyl6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452672392]
-position = Vector2(0, -34)
-scale = Vector2(0.16015626, 0.53125)
-texture = ExtResource("4_pwmpi")
+position = Vector2(2.3841858e-07, -45.7)
+scale = Vector2(0.4, 0.3228395)
+texture = ExtResource("4_tvuso")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=360166991]
-position = Vector2(0, -67)
+position = Vector2(-1, -86)

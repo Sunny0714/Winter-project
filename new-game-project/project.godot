@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Winter"
-run/main_scene="uid://b6pw17s7ak142"
+run/main_scene="uid://b5dhml1hrbj7b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Manager="*uid://c55chbo8fvfga"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 

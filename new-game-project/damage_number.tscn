@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://donn6lvg18gxn" path="res://damage_number.gd" id="1_jany0"]
 
 [node name="DamageNumber" type="Label" unique_id=83303853]
+z_index = 1000
 offset_right = 62.0
 offset_bottom = 39.0
 script = ExtResource("1_jany0")

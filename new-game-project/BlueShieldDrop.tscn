@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cbm57l3a3ngym"]
+
+[ext_resource type="Script" uid="uid://ealgmtq8uw3y" path="res://blue_shield_use.gd" id="1_56th3"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_56th3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
+radius = 71.84706
+
+[node name="BlueShieldDrop" type="Area2D" unique_id=442674607]
+z_index = -1
+script = ExtResource("1_56th3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763099926]
+shape = SubResource("CircleShape2D_8rbij")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
+position = Vector2(0, -4)
+scale = Vector2(0.1, 0.35)
+texture = ExtResource("2_56th3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
+z_index = 1000
+offset_left = -76.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 63.0
+scroll_active = false

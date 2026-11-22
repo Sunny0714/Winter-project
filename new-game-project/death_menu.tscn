@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bo7nhhnsrif43"]
+
+[ext_resource type="Script" uid="uid://b2q46lv8y2knl" path="res://death_menu.gd" id="1_dhhda"]
+
+[node name="DeathMenu" type="CanvasLayer" unique_id=1261205827]
+script = ExtResource("1_dhhda")
+
+[node name="Control" type="Control" parent="." unique_id=370232351]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 645.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1014792632]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+color = Color(0.38431373, 0.38431373, 0.38431373, 0.6156863)
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1912457908]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 645.0
+
+[node name="Respawn" type="Button" parent="Control/Panel" unique_id=1020287621]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 198.0
+offset_right = 680.0
+offset_bottom = 310.0
+text = "RESPAWN"
+
+[node name="Quit" type="Button" parent="Control/Panel" unique_id=432493742]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 342.0
+offset_right = 681.0
+offset_bottom = 450.0
+text = "QUIT"
+
+[connection signal="pressed" from="Control/Panel/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="Control/Panel/Quit" to="." method="_on_quit_pressed"]

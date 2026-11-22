@@ -15,6 +15,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1781338760]
+collision_mask = 11
 script = ExtResource("1_7k104")
 damage_number_scene = ExtResource("2_4gyqm")
 

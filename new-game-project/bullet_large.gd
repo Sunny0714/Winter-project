@@ -19,7 +19,6 @@ func _physics_process(delta):
 	var movement = direction * speed * delta
 	global_position += movement
 	distance_travelled += movement.length()
-
 	if distance_travelled >= max_distance:
 		queue_free()
 

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b367pqs5438rc"]
+
+[ext_resource type="Script" uid="uid://cbuhbl2x731dh" path="res://held_shotgun.gd" id="1_m3yhb"]
+[ext_resource type="PackedScene" uid="uid://dmuapljfdwlcu" path="res://bullet_shotgun.tscn" id="2_612pc"]
+[ext_resource type="PackedScene" uid="uid://rt38uj8s3fd6" path="res://reload_indicator.tscn" id="3_o47xe"]
+[ext_resource type="Texture2D" uid="uid://c48rpckea706x" path="res://PNG/Pixel_Art_Shotgun_Sprite-removebg-preview.png" id="4_612pc"]
+
+[node name="HeldShotgun" type="Node2D" unique_id=542782426]
+script = ExtResource("1_m3yhb")
+bullet_scene = ExtResource("2_612pc")
+reload_indicator_scene = ExtResource("3_o47xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1452672392]
+position = Vector2(0, -63.226)
+scale = Vector2(0.35400003, 0.3769059)
+texture = ExtResource("4_612pc")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=360166991]
+position = Vector2(0, -111)
+scale = Vector2(1.1, 1.1)

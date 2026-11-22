@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://cqlbbh6h6gxb6"]
 
 [ext_resource type="Script" uid="uid://nj4sc6to8j8f" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://dkladu8vimfwc" path="res://nade.tscn" id="2_b26j0"]
+[ext_resource type="PackedScene" uid="uid://buup8ejal1ocr" path="res://BlueShieldHeld.tscn" id="2_606se"]
+[ext_resource type="PackedScene" uid="uid://ccskp5681iuye" path="res://nade_vis.tscn" id="2_b26j0"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://cflafdegd0t4t" path="res://shieldnade_vis.tscn" id="2_ivps1"]
 [ext_resource type="PackedScene" uid="uid://w4xsyvcujvlc" path="res://damage_number.tscn" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://de5q5mo75agp" path="res://held_ak_47.tscn" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://cr03a4c0buxmj" path="res://health_bar.gd" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://wf3yip6ae1us" path="res://PurpleShieldHeld.tscn" id="3_u1c27"]
 [ext_resource type="PackedScene" uid="uid://wmj71h550jbe" path="res://melee.tscn" id="4_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://n8pjkbbg137e" path="res://held_pistol.tscn" id="4_dw050"]
 [ext_resource type="PackedScene" uid="uid://1miqbn1dkktd" path="res://grenade.tscn" id="5_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://b367pqs5438rc" path="res://held_shotgun.tscn" id="6_nvl01"]
+[ext_resource type="PackedScene" uid="uid://baexd22q7tiv5" path="res://MedkitHeld.tscn" id="8_n7ghd"]
+[ext_resource type="PackedScene" uid="uid://720kiiqttqau" path="res://Shield.tscn" id="10_urp6f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 72.02777
@@ -29,7 +35,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
-bg_color = Color(0.53333336, 0.047058824, 0.1254902, 1)
+bg_color = Color(0.36096987, 0.020620964, 0.072590135, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -37,12 +43,18 @@ corner_radius_bottom_left = 6
 
 [node name="Player" type="CharacterBody2D" unique_id=1921003556]
 script = ExtResource("1_onrkg")
+blue_potion_held_scene = ExtResource("2_606se")
+purple_potion_held_scene = ExtResource("3_u1c27")
+shield_visual_scene = ExtResource("2_ivps1")
 grenade_visual_scene = ExtResource("2_b26j0")
 damage_numbers_scene = ExtResource("2_sweqy")
 ak47_held_scene = ExtResource("3_2hs0m")
 pistol_held_scene = ExtResource("4_dw050")
+shotgun_held_scene = ExtResource("6_nvl01")
 melee_scene = ExtResource("4_2hs0m")
 grenade_scene = ExtResource("5_1jxqw")
+shield_scene = ExtResource("10_urp6f")
+medkit_held_scene = ExtResource("8_n7ghd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192790741]
 shape = SubResource("CircleShape2D_hqtel")
@@ -86,11 +98,12 @@ anchor_bottom = 1.0
 offset_left = -250.0
 offset_top = -108.0
 offset_right = 250.0
-offset_bottom = -96.0
+offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.4160229, 0.022828992, 0.016357934, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_hqtel")
+value = 100.0
 show_percentage = false
 
 [node name="DamageNumber" type="Marker2D" parent="." unique_id=127607569]

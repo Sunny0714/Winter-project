@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://weuddu6a0473"]
 
 [ext_resource type="Script" uid="uid://bbs8bbbh0vuau" path="res://pistol.gd" id="1_bttkv"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_6e3nq"]
+[ext_resource type="Texture2D" uid="uid://dkpson0cscxxo" path="res://PNG/deagle-removebg-preview.png" id="2_bttkv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
 radius = 55.145264
@@ -14,9 +14,10 @@ script = ExtResource("1_bttkv")
 shape = SubResource("CircleShape2D_8rbij")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
-rotation = 0.66831666
-scale = Vector2(0.20742826, 0.511869)
-texture = ExtResource("2_6e3nq")
+position = Vector2(-3.9999995, 3.9999995)
+rotation = -0.34906584
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_bttkv")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
 z_index = 100

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5dhml1hrbj7b"]
+
+[ext_resource type="Script" uid="uid://nbrft4tvr17d" path="res://start.gd" id="1_jwbto"]
+
+[node name="StartMenu" type="CanvasLayer" unique_id=675381113]
+
+[node name="Start" type="Control" parent="." unique_id=34384924]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jwbto")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965500934]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1129577557]
+color = Color(0.18039216, 0.18039216, 0.18039216, 0.68235296)

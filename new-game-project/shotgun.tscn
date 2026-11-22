@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ba125t18f3k5r"]
+
+[ext_resource type="Script" uid="uid://df0pfft3dtcln" path="res://shotgun.gd" id="1_5bb75"]
+[ext_resource type="Texture2D" uid="uid://b10irpn5w2b7g" path="res://PNG/shotgun-removebg-preview.png" id="2_5bb75"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
+radius = 71.84706
+
+[node name="Shotgun" type="Area2D" unique_id=442674607]
+z_index = -1
+script = ExtResource("1_5bb75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763099926]
+shape = SubResource("CircleShape2D_8rbij")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
+position = Vector2(0, 4)
+rotation = -0.57770395
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_5bb75")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
+z_index = 100
+offset_left = -76.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 63.0
+scroll_active = false

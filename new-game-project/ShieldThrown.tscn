@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://i75n6ogtvyv0"]
+
+[ext_resource type="Script" uid="uid://buxeivtpilrol" path="res://shield_thrown.gd" id="1_pqp0n"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_pqp0n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cg0lj"]
+radius = 22.0
+height = 62.0
+
+[node name="ShieldNadeThrown" type="Area2D" unique_id=442674607]
+z_index = -1
+script = ExtResource("1_pqp0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_pqp0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763099926]
+shape = SubResource("CapsuleShape2D_cg0lj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1252615554]
+z_index = 1000
+offset_left = -115.0
+offset_top = 28.0
+offset_right = 119.0
+offset_bottom = 68.0
+scroll_active = false

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctr3e8sbob3nj"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_8rbij"]
 [ext_resource type="Script" uid="uid://v51775djvw5u" path="res://ak_47.gd" id="1_evla6"]
+[ext_resource type="Texture2D" uid="uid://bsfexv54mqlw" path="res://PNG/AK47-removebg-preview.png" id="2_evla6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
 radius = 71.84706
@@ -14,9 +14,10 @@ script = ExtResource("1_evla6")
 shape = SubResource("CircleShape2D_8rbij")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
-rotation = 0.66831666
-scale = Vector2(0.1953125, 1)
-texture = ExtResource("1_8rbij")
+position = Vector2(2.000002, -2.0000012)
+rotation = -0.61086524
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_evla6")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
 z_index = 100

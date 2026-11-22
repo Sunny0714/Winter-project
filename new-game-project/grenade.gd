@@ -7,7 +7,6 @@ extends RigidBody2D
 @export var fuse_time: float = 2.0
 @export var throw_speed: float = 700.0
 @export var rotation_speed: float = 9.0
-@export var visual_scale: float = 0.7
 @export var grenade_mass: float = 0.05
 @export var bounce_strength: float = 1.0
 @export var bounce_boost: float = 1.5
@@ -32,7 +31,6 @@ func _ready():
 	physics_material_override.bounce = bounce_strength
 	physics_material_override.friction = 0.0
 	physics_material_override.rough = true
-	$Sprite2D.scale = Vector2.ONE * visual_scale
 	angular_velocity = rotation_speed
 	fuse_timer = fuse_time
 	flash_timer = flash_interval

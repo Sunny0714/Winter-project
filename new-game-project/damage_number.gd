@@ -16,12 +16,9 @@ func _process(delta):
 	lifetime -= delta
 	velocity.y += gravity * delta
 	position += velocity * delta
-
 	var progress = 1.0 - lifetime / max_lifetime
 	var current_scale = lerpf(start_scale, end_scale, progress)
 	scale = Vector2.ONE * current_scale
-
 	modulate.a = clampf(lifetime / max_lifetime, 0.0, 1.0)
-
 	if lifetime <= 0:
 		queue_free()

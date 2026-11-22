@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var grenade_amount: int = 3
+@export var separation_radius: float = 40.0
+@export var separation_speed: float = 1000.0
 
 @onready var label = $RichTextLabel
 
@@ -8,6 +10,7 @@ var player = null
 var picked_up := false
 
 func _ready():
+	add_to_group("dropped_items")
 	label.hide()
 	label.bbcode_enabled = true
 	body_entered.connect(_on_body_entered)
@@ -30,8 +33,30 @@ func _process(_delta):
 	if Input.is_action_just_pressed("interact") and Manager.claim_pickup_press():
 		pick_up()
 
+func _physics_process(delta):
+	var push_direction = Vector2.ZERO
+
+	for item in get_tree().get_nodes_in_group("dropped_items"):
+		if item == self or not is_instance_valid(item):
+			continue
+
+		var offset = global_position - item.global_position
+		var distance = offset.length()
+
+		if distance >= separation_radius:
+			continue
+
+		if distance < 0.01:
+			offset = Vector2.RIGHT.rotated(get_instance_id() % 360)
+			distance = 1.0
+
+		push_direction += offset.normalized() * (1.0 - distance / separation_radius)
+
+	if push_direction.length() > 0.0:
+		global_position += push_direction.normalized() * separation_speed * delta
+
 func update_label():
-	label.text = "[center][b]" + get_interact_key() + " TO PICK UP GRENADES[/b][/center]"
+	label.text = "[center][b]" + get_interact_key() + " TO PICK UP GRENADES x" + str(grenade_amount) + "[/b][/center]"
 
 func get_interact_key():
 	for event in InputMap.action_get_events("interact"):

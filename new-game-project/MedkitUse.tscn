@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7mlwgkl4a3t5"]
+
+[ext_resource type="Script" uid="uid://cd1410yyi4ijx" path="res://med.gd" id="1_hkaid"]
+[ext_resource type="Texture2D" uid="uid://b1x1nxxqngkfb" path="res://PNG/Medkit-removebg-preview.png" id="2_rrkyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rbij"]
+radius = 71.84706
+
+[node name="MedkitUse" type="Area2D" unique_id=442674607]
+z_index = -1
+script = ExtResource("1_hkaid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763099926]
+shape = SubResource("CircleShape2D_8rbij")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312435609]
+position = Vector2(-2, -3.9999995)
+scale = Vector2(0.5, 0.35)
+texture = ExtResource("2_rrkyn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1276583388]
+z_index = 100
+offset_left = -76.0
+offset_top = 23.0
+offset_right = 76.0
+offset_bottom = 63.0
+scroll_active = false
